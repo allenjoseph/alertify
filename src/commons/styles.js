@@ -93,5 +93,6 @@ export default StyleSheet.create({
     headerText: {
         color: lightColor,
         fontSize: sizeNormal,
+        fontWeight: 'bold',
     }
 });

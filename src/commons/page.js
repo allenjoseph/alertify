@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableHighlight, StatusBar, Platform } from 'react-native';
+import { View, Text, TouchableHighlight, Platform } from 'react-native';
 
 import styles from './styles.js';
 
@@ -7,10 +7,6 @@ export default class Page extends Component {
     render() {
         return (
             <View style={styles.page}>
-                <StatusBar
-                    backgroundColor="#5D77E9"
-                    barStyle="light-content"
-                />
                 <View style={[styles.header, {paddingTop: (Platform.OS === 'ios') ? 20 : 0}]}>
                     <View style={styles.flex}/>
                     <View style={styles.flex}>
