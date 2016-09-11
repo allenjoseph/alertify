@@ -6,6 +6,6 @@
 
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import AlertifyProject from './src/alertify.main.js';
+import App from './src/index.js';
 
-AppRegistry.registerComponent('AlertifyProject', () => AlertifyProject);
+AppRegistry.registerComponent('AlertifyProject', () => App);
