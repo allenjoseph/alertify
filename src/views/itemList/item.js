@@ -6,8 +6,8 @@ import styles from '../../commons/styles.js';
 export default class Item extends Component {
     render() {
         return (
-            <TouchableHighlight onPress={ this._highlight.bind(this) }>
-                <View style={[styles.item, styles.bgLight]}>
+            <TouchableHighlight onPress={ this._preview.bind(this) }>
+                <View style={styles.item}>
                     <View style={[styles.rows]}>
                         <Text style={styles.textTitle}> {this.props.data.title} </Text>
                         <Switch onValueChange={ this._switch.bind(this) } value={this.props.data.selected}/>
@@ -30,5 +30,11 @@ export default class Item extends Component {
         items[this.props.rowId].selected = !items[this.props.rowId].selected;
 
         this.props.updateItems(items);
+    }
+
+    _preview() {
+        let previewRoute = { title: 'Preview', index: 2 };
+
+        this.props.navigator.replace(previewRoute);
     }
 }

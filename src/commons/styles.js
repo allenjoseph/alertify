@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 let primaryColor = '#5D77E9';
 let backgroundColor= '#E0E0E0';
-let lightColor = '#F6F6F6';
+let lightColor = '#FFFFFF';
 let darkColor = '#333333';
 let sizeNormal = 16;
 let sizeBig = 40;
@@ -44,7 +44,6 @@ export default StyleSheet.create({
     },
     body: {
         flex: 9,
-        margin: 10,
     },
     rows: {
         flex: 1,
@@ -57,10 +56,11 @@ export default StyleSheet.create({
         marginTop: 0,
     },
     separator: {
-        height: 10,
+        height: 1,
     },
     item: {
         padding: 10,
+        backgroundColor: lightColor,
     },
     button: {
         backgroundColor: primaryColor,
@@ -86,13 +86,19 @@ export default StyleSheet.create({
         height: sizeHeader,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
-        paddingRight: 20,
-        paddingLeft: 20,
+        paddingRight: 10,
+        paddingLeft: 10,
     },
     headerText: {
         color: lightColor,
         fontSize: sizeNormal,
         fontWeight: 'bold',
-    }
+    },
+    input: {
+        height: 40,
+        borderWidth: 0.5,
+        borderColor: '#333333',
+        backgroundColor: lightColor,
+        padding: 4,
+    },
 });

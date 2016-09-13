@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Navigator, StatusBar, Platform } from 'react-native';
 
 import FakeNotification from './views/fakeNotification.js';
-import Thanks from './views/thanks.js';
 import ItemList from './views/itemList/index.js';
+import Preview from './views/preview.js';
+import Sign from './views/sign.js';
+import Thanks from './views/thanks.js';
 
 export default class App extends Component {
     constructor(props){
@@ -38,6 +40,14 @@ export default class App extends Component {
         }
 
         if(route.index === 2){
+            return (<Preview navigator={navigator} route={route}/>);
+        }
+
+        if(route.index === 3){
+            return (<Sign navigator={navigator} route={route}/>);
+        }
+
+        if(route.index === 4){
             return (<Thanks navigator={navigator} route={route}/>);
         }
     }

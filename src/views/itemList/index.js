@@ -20,11 +20,11 @@ export default class ItemList extends Component {
     render() {
         return (
             <Page route={this.props.route} selectAll={this._selectAll.bind(this) }>
-                <Items ds={this.state.dataSource} items={this.state.items} updateItems={this._updateItems.bind(this)}/>
-                <View style={[styles.rows, styles.footer]}>
-                    <Button onPress={this.clickCancel} color={'buttonLight'}>Cancel</Button>
-                    <Button onPress={this._send.bind(this)}>Send</Button>
-                </View>
+                <Items 
+                    ds={this.state.dataSource} 
+                    items={this.state.items} 
+                    updateItems={this._updateItems.bind(this)}
+                    navigator={this.props.navigator}/>
             </Page>
         );
     }
@@ -54,18 +54,5 @@ export default class ItemList extends Component {
         }
 
         this._updateItems(items);
-    }
-
-    _send() {
-        let thanksRoute = { title: '', index: 2 };
-
-        Alert.alert(
-            'Please Confirm',
-            'I want to send all items selected.',
-            [
-                { text: 'Cancel', onPress: () => {}, style: 'cancel' },
-                { text: 'Yes', onPress: () => this.props.navigator.replace(thanksRoute) },
-            ]
-        );
     }
 }

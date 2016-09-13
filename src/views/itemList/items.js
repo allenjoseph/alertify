@@ -8,7 +8,7 @@ export default class Items extends Component {
     render() {
         return (
             <ListView
-                style={styles.body}
+                style={[styles.body]}
                 dataSource={this.props.ds}
                 renderRow={this._renderRow.bind(this) }
                 renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
@@ -31,9 +31,9 @@ export default class Items extends Component {
         );
     }
 
-    _renderRow(rowData, sectionID, rowID, highlightRow) {
+    _renderRow(rowData, sectionID, rowID) {
         return (
-            <Item data={rowData} sectionId={sectionID} rowId={rowID} highlight={highlightRow}
+            <Item data={rowData} navigator={this.props.navigator} sectionId={sectionID} rowId={rowID}
                 items={this.props.items} updateItems={this.props.updateItems.bind(this)}/>
         );
     }

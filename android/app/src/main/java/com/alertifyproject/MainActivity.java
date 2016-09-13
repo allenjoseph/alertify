@@ -1,6 +1,8 @@
 package com.alertifyproject;
 
 import com.facebook.react.ReactActivity;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends ReactActivity {
 
@@ -11,5 +13,9 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "AlertifyProject";
+    }
+
+    public void onCreate() {
+        Fabric.with(this, new Crashlytics());
     }
 }

@@ -8,16 +8,15 @@ export default class Page extends Component {
         return (
             <View style={styles.page}>
                 <View style={[styles.header, {paddingTop: (Platform.OS === 'ios') ? 20 : 0}]}>
-                    <View style={styles.flex}/>
                     <View style={styles.flex}>
-                        <Text style={[styles.headerText, styles.alignCenter]}>
+                        <Text style={styles.headerText}>
                             {this.props.route.title}
                         </Text>
                     </View>
-                    <View style={styles.flex}>
+                    <View style={[styles.alignEnd]}>
                         { this.props.route.index === 1 ? 
-                            <TouchableHighlight onPress={this.props.selectAll} underlayColor="transparent">
-                                <Text style={[styles.headerText, styles.alignEnd]}>All</Text>
+                            <TouchableHighlight onPress={this.props.selectAll} underlayColor="transparent" style={styles.centered}>
+                                <Text style={styles.headerText}>All</Text>
                             </TouchableHighlight> :
                             null
                         }
