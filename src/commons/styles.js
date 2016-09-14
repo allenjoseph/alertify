@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 let primaryColor = '#5D77E9';
-let backgroundColor= '#E0E0E0';
 let lightColor = '#FFFFFF';
 let darkColor = '#333333';
+let sizeTitle = 20;
 let sizeNormal = 16;
 let sizeBig = 40;
 let sizeHeader = 60;
@@ -40,7 +40,7 @@ export default StyleSheet.create({
     page:{
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: backgroundColor,
+        backgroundColor: lightColor,
     },
     body: {
         flex: 9,
@@ -56,7 +56,8 @@ export default StyleSheet.create({
         marginTop: 0,
     },
     separator: {
-        height: 1,
+        height: 0.5,
+        backgroundColor: darkColor,
     },
     item: {
         padding: 10,
@@ -93,12 +94,12 @@ export default StyleSheet.create({
         color: lightColor,
         fontSize: sizeNormal,
         fontWeight: 'bold',
+        fontSize: sizeTitle,
     },
     input: {
         height: 40,
-        borderWidth: 0.5,
-        borderColor: '#333333',
-        backgroundColor: lightColor,
+        borderBottomWidth: 0.5,
+        borderBottomColor: '#333333',
         padding: 4,
     },
 });
