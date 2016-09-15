@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableHighlight, Platform } from 'react-native';
 
-import styles from './styles.js';
+import styles from '../constants/styles.js';
 
 export default class Page extends Component {
     render() {

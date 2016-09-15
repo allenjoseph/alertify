@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, ListView, RecyclerViewBackedScrollView } from 'react-native';
 
-import styles from '../../commons/styles.js';
-import Item from './item.js';
+import styles from '../../constants/styles.js';
+import Row from './row.js';
 
-export default class Items extends Component {
+export default class List extends Component {
     render() {
         return (
             <ListView
@@ -20,7 +20,7 @@ export default class Items extends Component {
     _genRows() {
         let dataBlob = [];
         for (let ii = 1; ii <= 5; ii++) {
-            dataBlob.push({ title: 'ITEM ' + ii, selected: false });
+            dataBlob.push({ title: 'FILA ' + ii, selected: false });
         }
         return dataBlob;
     }
@@ -33,8 +33,8 @@ export default class Items extends Component {
 
     _renderRow(rowData, sectionID, rowID) {
         return (
-            <Item data={rowData} navigator={this.props.navigator} sectionId={sectionID} rowId={rowID}
-                items={this.props.items} updateItems={this.props.updateItems.bind(this)}/>
+            <Row data={rowData} navigator={this.props.navigator} sectionId={sectionID} rowId={rowID}
+                list={this.props.list} updateList={this.props.updateList.bind(this)}/>
         );
     }
 }

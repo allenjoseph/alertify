@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 let primaryColor = '#5D77E9';
 let lightColor = '#FFFFFF';
 let darkColor = '#333333';
-let sizeTitle = 20;
-let sizeNormal = 16;
+let sizeTitle = 24;
+let sizeNormal = 20;
 let sizeBig = 40;
 let sizeHeader = 60;
 
@@ -59,7 +59,7 @@ export default StyleSheet.create({
         height: 0.5,
         backgroundColor: darkColor,
     },
-    item: {
+    row: {
         padding: 10,
         backgroundColor: lightColor,
     },

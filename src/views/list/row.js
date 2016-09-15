@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, View, Text, Switch } from 'react-native';
 
-import styles from '../../commons/styles.js';
+import styles from '../../constants/styles.js';
+import { route } from '../../index.routes.js';
 
-export default class Item extends Component {
+export default class Row extends Component {
     render() {
         return (
             <TouchableHighlight onPress={ this._preview.bind(this) }>
-                <View style={styles.item}>
+                <View style={styles.row}>
                     <View style={[styles.rows]}>
                         <Text style={styles.textTitle}> {this.props.data.title} </Text>
                     </View>
@@ -23,19 +24,7 @@ export default class Item extends Component {
         this.props.highlight(this.props.sectionId, this.props.rowId);
     }
 
-    //<Switch onValueChange={ this._switch.bind(this) } value={this.props.data.selected}/>
-    /*
-    _switch() {
-        let items = this.props.items.slice();
-
-        items[this.props.rowId].selected = !items[this.props.rowId].selected;
-
-        this.props.updateItems(items);
-    }*/
-
     _preview() {
-        let previewRoute = { title: 'Preview', index: 2 };
-
-        this.props.navigator.replace(previewRoute);
+        this.props.navigator.replace(route.preview);
     }
 }

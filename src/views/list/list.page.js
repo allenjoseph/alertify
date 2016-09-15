@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
 import { View, ListView, Alert } from 'react-native';
 
-import Page from '../../commons/page.js';
-import Button from '../../commons/button.js';
-import styles from '../../commons/styles.js';
-import Items from './items.js';
+import Page from '../../widgets/page.js';
+import Button from '../../widgets/button.js';
+import styles from '../../constants/styles.js';
+import List from './list.js';
 
-export default class ItemList extends Component {
+export default class ListPage extends Component {
     constructor(props) {
         super(props);
         this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-        items = this._genRows();
+        list = this._genRows();
         this.state = {
-            items: items,
-            dataSource: this.ds.cloneWithRows(items)
+            list: list,
+            dataSource: this.ds.cloneWithRows(list)
         };
     }
 
     render() {
         return (
             <Page route={this.props.route} selectAll={this._selectAll.bind(this) }>
-                <Items 
+                <List 
                     ds={this.state.dataSource} 
-                    items={this.state.items} 
-                    updateItems={this._updateItems.bind(this)}
+                    list={this.state.list} 
+                    updateList={this._updateList.bind(this)}
                     navigator={this.props.navigator}/>
             </Page>
         );
     }
 
-    _updateItems(items){
+    _updateList(list){
         let state = {
-            items: items,
-            dataSource: this.ds.cloneWithRows(items)
+            list: list,
+            dataSource: this.ds.cloneWithRows(list)
         };
 
         this.setState(state);
@@ -47,12 +47,12 @@ export default class ItemList extends Component {
     }
 
     _selectAll() {
-        let items = this.state.items.slice();
+        let list = this.state.list.slice();
 
-        for (let i = 0; i < items.length; i++) {
-            items[i].selected = true;
+        for (let i = 0; i < list.length; i++) {
+            list[i].selected = true;
         }
 
-        this._updateItems(items);
+        this._updateList(list);
     }
 }
