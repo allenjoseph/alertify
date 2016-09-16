@@ -4,6 +4,13 @@ import com.facebook.react.ReactActivity;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
+import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainReactPackage;
+import com.mikemonteith.reactnativeandroidcheckbox.CheckboxPackage;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class MainActivity extends ReactActivity {
 
     /**
@@ -18,4 +25,5 @@ public class MainActivity extends ReactActivity {
     public void onCreate() {
         Fabric.with(this, new Crashlytics());
     }
+
 }

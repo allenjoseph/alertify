@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, View, Text, Switch, StyleSheet } from 'react-native';
+import { TouchableHighlight, View, Text, Switch, StyleSheet, Platform } from 'react-native';
 
 import { route } from '../../index.routes.js';
+import Check from '../../widgets/check.js';
 
 export default class Row extends Component {
     render() {
         return (
-            <TouchableHighlight onPress={this._preview.bind(this)} underlayColor="#dfdfdf">
-                <View style={styles.wrapper}>
-                    <Switch
-                        onValueChange={this._switch.bind(this)} 
-                        value={this.props.data.selected}/>
-                    <View style={styles.row}>
-                        <Text style={styles.rowTitle}>{this.props.data.title}</Text>
-                        <View style={styles.rowContent}>
+            <View style={styles.container}>
+                <Check
+                    onValueChange={this._switch.bind(this)}
+                    value={this.props.data.selected}/>
+                <View style={styles.row}>
+                    <View style={styles.left}>
+                        <Text style={styles.title}>{this.props.data.title}</Text>
+                        <View style={styles.content}>
                         {this.props.data.values.map((o, i) => 
                             <Text style={styles.value} key={i}>{o.key}: {o.value}</Text>
                         )}
                         </View>
                     </View>
+                    <TouchableHighlight onPress={this._preview.bind(this)} underlayColor="transparent" style={styles.right}>
+                        <Text style={styles.textButton}>></Text>
+                    </TouchableHighlight>
                 </View>
-            </TouchableHighlight>
+            </View>
         );
     }
 
@@ -36,7 +40,7 @@ export default class Row extends Component {
 }
 
 let styles = StyleSheet.create({
-    wrapper: {
+    container: {
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'flex-start',
@@ -46,17 +50,29 @@ let styles = StyleSheet.create({
     },
     row:{
         flex: 1,
-        margin: 10,
+        flexDirection: 'row',
     },
-    rowTitle: {
+    title: {
         fontSize: 16,
         fontWeight: '700',
     },
-    rowContent:{
+    content:{
         flexDirection: 'column',
     },
     value: {
         fontSize: 14,
         color: '#111',
     },
+    left: {
+        flex: 9,
+        padding: 10,
+    },
+    right: {
+        flex: 1,
+        alignSelf: 'center',
+    },
+    textButton: {
+        fontSize: 24,
+        color: '#ccc',
+    }
 });

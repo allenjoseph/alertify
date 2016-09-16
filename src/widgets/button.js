@@ -4,8 +4,8 @@ import { Text, TouchableHighlight, StyleSheet } from 'react-native';
 export default class Button extends Component {
     render() {
         return (
-            <TouchableHighlight onPress={this.props.onPress} underlayColor="#ddd">
-                <Text style={[styles.button, styles[this.props.color]]}>
+            <TouchableHighlight onPress={this.props.onPress} underlayColor="#ddd" style={[styles.button, styles[this.props.color], this.props.style]}>
+                <Text style={styles.text}>
                     {this.props.children.toUpperCase()}
                 </Text>
             </TouchableHighlight>
@@ -14,13 +14,18 @@ export default class Button extends Component {
 }
 
 let styles = StyleSheet.create({
-    button: {
-        backgroundColor: '#666',
+    text: {
         color: '#fff',
         fontSize: 14,
-        minWidth: 100,
-        padding: 10,
         textAlign: 'center',
         fontWeight: '600',
+    },
+    button: {
+        backgroundColor: '#666',
+        minWidth: 100,
+        padding: 10,
+    },
+    dark: {
+        backgroundColor: '#111',
     },
 });

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, ListView, Alert, StyleSheet, Text, Switch } from 'react-native';
+import { View, ListView, Alert, StyleSheet, Text } from 'react-native';
 
 import Page from '../../widgets/page.js';
 import Button from '../../widgets/button.js';
 import List from './list.js';
+import Check from '../../widgets/check.js';
 
 export default class ListPage extends Component {
     constructor(props) {
@@ -15,18 +16,20 @@ export default class ListPage extends Component {
             labelSelectAll: 'Seleccionar todas',
             selectAll: false,
             list: list,
-            dataSource: this.ds.cloneWithRows(list)
+            dataSource: this.ds.cloneWithRows(list),
+            labelAccept: 'Aprobar',
+            labelDecline: 'Rechazar'
         };
     }
 
     render() {
         return (
-            <Page route={this.props.route} selectAll={this._selectAll.bind(this) }>
+            <Page route={this.props.route}>
                 <Text style={styles.title}>{this.state.title}</Text>
                 <View style={styles.selectAll}>
-                    <Switch
+                    <Check
                         onValueChange={this._selectAll.bind(this)}
-                        value={this.state.selectAll} />
+                        value={this.state.selectAll}/>
                     <Text style={styles.labelSelectAll}>{this.state.labelSelectAll}</Text>
                 </View>
                 <List 
@@ -34,6 +37,10 @@ export default class ListPage extends Component {
                     list={this.state.list} 
                     updateList={this._updateList.bind(this)}
                     navigator={this.props.navigator}/>
+                <View style={styles.buttons}>
+                    <Button style={styles.buttonDecline}>{this.state.labelDecline}</Button>
+                    <Button style={styles.buttonAccept} color={'dark'}>{this.state.labelAccept}</Button>
+                </View>
             </Page>
         );
     }
@@ -103,5 +110,15 @@ let styles = StyleSheet.create({
         fontSize: 14,
         flex: 1,
         color: '#999',
+    },
+    buttons: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    buttonDecline: {
+        flex: 1,
+    },
+    buttonAccept: {
+        flex: 3,
     },
 });

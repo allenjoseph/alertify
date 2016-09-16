@@ -1,3 +1,5 @@
 rootProject.name = 'AlertifyProject'
 
-include ':app'
+include ':react-native-android-checkbox', ':app'
+
+project(':react-native-android-checkbox').projectDir = new File(settingsDir, '../node_modules/react-native-android-checkbox/android')

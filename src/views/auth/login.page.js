@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { View, StyleSheet, Text, TextInput, Platform } from 'react-native';
 
 import Page from '../../widgets/page.js';
 import Button from '../../widgets/button.js';
@@ -24,7 +24,7 @@ export default class LoginPage extends Component {
     render() {
         return (
             <Page route={this.props.route}>
-                <View style={styles.wrapper}>
+                <View style={styles.container}>
                     <View>
                         <Text style={styles.title}>{this.state.title}</Text>
                     </View>
@@ -32,7 +32,7 @@ export default class LoginPage extends Component {
                         <Text style={styles.label}>{this.state.labelCard}</Text>
                         <TextInput
                             style={styles.input}
-                            keyboardType={'number-pad'}
+                            keyboardType={Platform.OS === 'ios'?'number-pad':'numeric'}
                             onChangeText={(card) => this.setState({card})}
                             value={this.state.card}/>
                         <Text style={[styles.label, styles.labelLight]}>{this.state.labelRememberCard}</Text>
@@ -41,7 +41,7 @@ export default class LoginPage extends Component {
                         <Text style={styles.label}>{this.state.labelPassword}</Text>
                         <TextInput
                             style={styles.input}
-                            keyboardType={'number-pad'}
+                            keyboardType={Platform.OS === 'ios'?'number-pad':'numeric'}
                             onChangeText={(password) => this.setState({password})}
                             value={this.state.password}/>
                         <Text style={[styles.label, styles.labelLight]}>{this.state.labelPasswordHelp}</Text>
@@ -62,7 +62,7 @@ export default class LoginPage extends Component {
 }
 
 let styles = StyleSheet.create({
-    wrapper: {
+    container: {
         alignItems: 'center',
     },
     input: {
