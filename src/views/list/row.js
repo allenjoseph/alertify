@@ -1,30 +1,62 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, View, Text, Switch } from 'react-native';
+import { TouchableHighlight, View, Text, Switch, StyleSheet } from 'react-native';
 
-import styles from '../../constants/styles.js';
 import { route } from '../../index.routes.js';
 
 export default class Row extends Component {
     render() {
         return (
-            <TouchableHighlight onPress={ this._preview.bind(this) }>
-                <View style={styles.row}>
-                    <View style={[styles.rows]}>
-                        <Text style={styles.textTitle}> {this.props.data.title} </Text>
-                    </View>
-                    <View>
-                        <Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum diam magna, porttitor eget fringilla sit amet, dapibus non libero. Curabitur viverra.</Text>
+            <TouchableHighlight onPress={this._preview.bind(this)} underlayColor="#dfdfdf">
+                <View style={styles.wrapper}>
+                    <Switch
+                        onValueChange={this._switch.bind(this)} 
+                        value={this.props.data.selected}/>
+                    <View style={styles.row}>
+                        <Text style={styles.rowTitle}>{this.props.data.title}</Text>
+                        <View style={styles.rowContent}>
+                        {this.props.data.values.map((o, i) => 
+                            <Text style={styles.value} key={i}>{o.key}: {o.value}</Text>
+                        )}
+                        </View>
                     </View>
                 </View>
             </TouchableHighlight>
         );
     }
 
-    _highlight(){
-        this.props.highlight(this.props.sectionId, this.props.rowId);
+    _switch(value) {
+        let list = this.props.list.slice();
+        list[this.props.rowId].selected = value;
+        this.props.updateList(list);
     }
 
     _preview() {
         this.props.navigator.replace(route.preview);
     }
 }
+
+let styles = StyleSheet.create({
+    wrapper: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        borderBottomColor: '#ddd',
+        borderBottomWidth: 1,
+        padding: 10,
+    },
+    row:{
+        flex: 1,
+        margin: 10,
+    },
+    rowTitle: {
+        fontSize: 16,
+        fontWeight: '700',
+    },
+    rowContent:{
+        flexDirection: 'column',
+    },
+    value: {
+        fontSize: 14,
+        color: '#111',
+    },
+});

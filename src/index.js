@@ -6,12 +6,12 @@ import { route } from './index.routes.js';
 export default class App extends Component {
     constructor(props){
         super(props);
-
+        
         if(Platform.OS === 'android'){
-            StatusBar.setBackgroundColor('#5D77E9');
+            StatusBar.setBackgroundColor('whitesmoke');
         }
         if(Platform.OS === 'ios'){
-            StatusBar.setBarStyle('light-content');
+            StatusBar.setBarStyle('default');
         }
     }
 

@@ -1,19 +1,56 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet, Text, TextInput } from 'react-native';
 
 import Page from '../../widgets/page.js';
 import Button from '../../widgets/button.js';
-import styles from '../../constants/styles.js';
 import { route } from '../../index.routes.js';
 
 export default class LoginPage extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            title: 'Aprobación\nde Carta Fianza',
+            labelCard: 'Ingresa tu número de tarjeta empresarial',
+            card: '',
+            labelRememberCard: 'Recordar',
+            rememberCard: true,
+            labelPassword: 'Ingresa tu clave de internet',
+            password: '',
+            labelPasswordHelp: '¿Cómo genero mi clave de internet?',
+            labelLogin: 'Ingresar'
+        };
+    }
+
     render() {
         return (
             <Page route={this.props.route}>
-                <View style={styles.centered}>
-                    <Button onPress={this._onPress.bind(this)}>
-                        Entrar
-                    </Button>
+                <View style={styles.wrapper}>
+                    <View>
+                        <Text style={styles.title}>{this.state.title}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.label}>{this.state.labelCard}</Text>
+                        <TextInput
+                            style={styles.input}
+                            keyboardType={'number-pad'}
+                            onChangeText={(card) => this.setState({card})}
+                            value={this.state.card}/>
+                        <Text style={[styles.label, styles.labelLight]}>{this.state.labelRememberCard}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.label}>{this.state.labelPassword}</Text>
+                        <TextInput
+                            style={styles.input}
+                            keyboardType={'number-pad'}
+                            onChangeText={(password) => this.setState({password})}
+                            value={this.state.password}/>
+                        <Text style={[styles.label, styles.labelLight]}>{this.state.labelPasswordHelp}</Text>
+                    </View>
+                    <View>
+                        <Button onPress={this._onPress.bind(this)}>
+                            {this.state.labelLogin}
+                        </Button>
+                    </View>
                 </View>
             </Page>
         );
@@ -23,3 +60,27 @@ export default class LoginPage extends Component {
         this.props.navigator.replace(route.list);
     }
 }
+
+let styles = StyleSheet.create({
+    wrapper: {
+        alignItems: 'center',
+    },
+    input: {
+        height: 30, 
+        borderColor: 'lightgray', 
+        borderWidth: 1
+    },
+    label: {
+        textAlign: 'center',
+        margin: 10,
+    },
+    title: {
+        fontSize: 28,
+        fontWeight: '700',
+        margin: 20,
+        textAlign: 'center',
+    },
+    labelLight: {
+        color: '#999',
+    },
+});
