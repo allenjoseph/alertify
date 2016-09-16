@@ -66,7 +66,6 @@ let styles = StyleSheet.create({
         alignItems: 'center',
     },
     input: {
-        height: 30, 
         borderColor: 'lightgray', 
         borderWidth: 1
     },
